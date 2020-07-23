@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import PropTypes from "prop-types";
+import { View, Text, StyleSheet, Button } from "react-native";
 
 const styles = StyleSheet.create({
   screen: {
@@ -9,10 +10,20 @@ const styles = StyleSheet.create({
   }
 });
 
-const CategoryMealScreen = () => (
+const CategoryMealScreen = ({ navigation }) => (
   <View style={styles.screen}>
     <Text>The Category Meal Screen!</Text>
+    <Button
+      title="Go to Detail!"
+      onPress={() => navigation.navigate("MealDetail")}
+    />
   </View>
 );
+
+CategoryMealScreen.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired
+  }).isRequired
+};
 
 export default CategoryMealScreen;
