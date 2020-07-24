@@ -1,29 +1,31 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { View, Text, StyleSheet, Button } from "react-native";
+import { View, Text, StyleSheet, FlatList } from "react-native";
+
+import { CATEGORIES } from "../data/dummy-data";
 
 const styles = StyleSheet.create({
-  screen: {
+  gridItem: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
+    margin: 15,
+    height: 150
   }
 });
 
-const CategoriesScreen = ({ navigation }) => (
-  <View style={styles.screen}>
-    <Text>The Categories Screen!</Text>
-    <Button
-      title="Go to Meals!"
-      onPress={() => navigation.navigate("CategoryMeal")}
-    />
-  </View>
-);
+const CategoriesScreen = () => {
+  const renderCategoryItem = (itemData) => (
+    <View style={styles.gridItem}>
+      <Text>{itemData.item.title}</Text>
+    </View>
+  );
 
-CategoriesScreen.propTypes = {
-  navigation: PropTypes.shape({
-    navigate: PropTypes.func.isRequired
-  }).isRequired
+  return (
+    <FlatList
+      keyExtractor={(item) => item.id}
+      data={CATEGORIES}
+      renderItem={renderCategoryItem}
+      numColumns={2}
+    />
+  );
 };
 
 export default CategoriesScreen;
