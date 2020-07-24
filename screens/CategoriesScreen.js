@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import PropTypes from "prop-types";
+import { View, Text, StyleSheet, FlatList, TouchableOpacity } from "react-native";
 
 import { CATEGORIES } from "../data/dummy-data";
 
@@ -11,11 +12,18 @@ const styles = StyleSheet.create({
   }
 });
 
-const CategoriesScreen = () => {
+const CategoriesScreen = ({ navigation }) => {
   const renderCategoryItem = (itemData) => (
-    <View style={styles.gridItem}>
-      <Text>{itemData.item.title}</Text>
-    </View>
+    <TouchableOpacity
+      style={styles.gridItem}
+      onPress={() => navigation.navigate("CategoryMeal", {
+        categoryId: itemData.item.id
+      })}
+    >
+      <View>
+        <Text>{itemData.item.title}</Text>
+      </View>
+    </TouchableOpacity>
   );
 
   return (
@@ -26,6 +34,14 @@ const CategoriesScreen = () => {
       numColumns={2}
     />
   );
+};
+
+CategoriesScreen.navigationOptions = {
+  title: "Meal Categoties"
+};
+
+CategoriesScreen.propTypes = {
+  navigation: PropTypes.object.isRequired
 };
 
 export default CategoriesScreen;
