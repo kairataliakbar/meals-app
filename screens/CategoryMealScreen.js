@@ -7,14 +7,11 @@ import MealItem from "../components/MealItem";
 
 const styles = StyleSheet.create({
   screen: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
+    flex: 1
   },
   flatListStyle: {
     width: "100%",
-    paddingHorizontal: 10,
-    paddingVertical: 10
+    paddingHorizontal: 10
   }
 });
 
