@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { View, Text, StyleSheet, TouchableOpacity, ImageBackground } from "react-native";
 
+import GlobalStyles from "../constants/GlobalStyles";
+
 const styles = StyleSheet.create({
   mealItem: {
     height: 200,
@@ -34,7 +36,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12
   },
   title: {
-    fontFamily: "open-sans-bold",
     fontSize: 20,
     textAlign: "center",
     color: "white"
@@ -51,14 +52,19 @@ const MealItem = (props) => (
             style={styles.image}
           >
             <Text style={styles.titleContainer}>
-              <Text style={styles.title} numberOfLines={1}>{props.title}</Text>
+              <Text
+                style={{ ...styles.title, ...GlobalStyles.customTextBold}}
+                numberOfLines={1}
+              >
+                {props.title}
+              </Text>
             </Text>
           </ImageBackground>
         </View>
         <View style={{ ...styles.mealRow, ...styles.mealDetails }}>
-          <Text>{props.duration}m</Text>
-          <Text>{props.complexity}</Text>
-          <Text>{props.affordability}</Text>
+          <Text style={GlobalStyles.customText}>{props.duration}m</Text>
+          <Text style={GlobalStyles.customText}>{props.complexity}</Text>
+          <Text style={GlobalStyles.customText}>{props.affordability}</Text>
         </View>
       </View>
     </TouchableOpacity>
