@@ -91,6 +91,15 @@ FiltersScreen.navigationOptions = ({ navigation }) => {
           onPress={() => navigation.toggleDrawer()}
           />
       </HeaderButtons>
+    ),
+    headerRight: () => (
+      <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+        <Item
+          title="Save"
+          iconName="ios-save"
+          onPress={() => console.log("Saved!")}
+        />
+      </HeaderButtons>
     )
   };
 };
